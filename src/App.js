@@ -25,7 +25,7 @@ const XDictionary = () => {
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    setIsButtonDisabled(event.target.value === '');
+    //	setIsButtonDisabled(event.target.value === '');
   };
 
   return (
