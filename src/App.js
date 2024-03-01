@@ -9,6 +9,7 @@ const XDictionary = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResult, setSearchResult] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleSearch = () => {
     const result = initialDictionary.find(entry =>
@@ -22,16 +23,21 @@ const XDictionary = () => {
     }
   };
 
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    setIsButtonDisabled(event.target.value === '');
+  };
+
   return (
     <div>
       <h1>Dictionary App</h1>
       <input
         type="text"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleChange}
         placeholder="Enter a word..."
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} disabled={isButtonDisabled}>Search</button>
       {searchResult && <p>{searchResult}</p>}
     </div>
   );
